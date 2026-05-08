@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH -J ppd_test
+#SBATCH -A myallocation
+#SBATCH -q shared
+#SBATCH -t 10:00:00
+#SBATCH -C gpu
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 32
+#SBATCH --gpus-per-node=1
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=myemail@workplace.edu
+#SBATCH --output=JOB_OUT_%x_%j.txt
+#SBATCH --error=JOB_ERR_%x_%j.txt
+
+# This is an example of how to set up a GPU job for PPD calculations
+# assuming you already have chains on hand with saved theory
+# datavectors as part of their cosmosis EXTRA_OUTPUT
+
+# Note that the wallclock time above is a significant overestimate:
+# Tese calculations typically take a couple minutes per chain. 
+
+export SLURM_CPU_BIND="cores"
+ 
+source setup_ppd_env_nersc.sh
+
+srun python run_ppd_calcs_example.py
+

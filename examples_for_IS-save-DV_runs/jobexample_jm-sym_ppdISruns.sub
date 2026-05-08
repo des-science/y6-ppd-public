@@ -1,0 +1,45 @@
+#!/bin/bash
+#SBATCH -J ppd_ISruns
+#SBATCH -p defq
+#SBATCH -t 1-00:00:00
+#SBATCH -N 1
+#SBATCH --tasks-per-node 40
+#SBATCH --cpus-per-task=2
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=jmuir@perimeterinstitute.ca
+#SBATCH --output=JOB_OUT_%x_%j.txt
+#SBATCH --error=JOB_ERR_%x_%j.txt
+
+# this is a job script like one I (Jessie) have submitted on
+# the symmetry cluster at perimeter institute to run IS runs
+# given some prexisting MCMC chains. So some of the setup stuff
+# is cluster specific: generally, use the same setup as you would
+# for running chains, though you can get away with using fewer cores
+
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+
+# set up cosmosis environment, user-specific path variables
+module load anaconda3
+source activate ${HOME}/cosmosis3/env
+source ../sh_files/setenv_jm_sym.sh
+cd ${CALLFROM}
+
+export CAMPAIGN=yml_for_ppd_savedv/ppd.campaign_xlens_noisy.yml
+# where have you put the completed polychord chains?
+export ORIG_CHAIN_DIR=/gpfs/jmuir/ppd_tests
+# path to cosmosis-standard-library
+export CSL_PATH=${HOME}/cosmosis3/cosmosis-standard-library
+# where to put IS chain output
+export OUTPUT_DIR=/gpfs/jmuir/ppd_tests
+
+# this job is set up to run several IS runs in sequence,
+# could also just do one at a time with more standard cosmosis calls
+
+runlist="ppd.wnoise_22pt-sw_lcdm_fidsimy6_r01-IS ppd.wnoise_22pt-sg_lcdm_fidsimy6_r01-IS ppd.wnoise_22pt-sw_lcdm_altdv-xlens090_r01-IS ppd.wnoise_22pt-sg_lcdm_altdv-xlens090_r01-IS" 
+
+for i in $runlist; do
+    echo ">>>>>>>>>>>>>>>>>>>>>>>>>"
+    echo ">> " $i
+    echo ">>>>>>>>>>>>>>>>>>>>>>>>>"
+    mpirun  -n ${SLURM_NTASKS}  cosmosis-campaign ${CAMPAIGN} --run $i --mpi 
+    

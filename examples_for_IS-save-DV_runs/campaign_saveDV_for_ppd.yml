@@ -1,0 +1,127 @@
+# This campaign file contains runs that can be used for saving extra output for PPD.
+
+#  Need to define chain directory paths as bash variables in  your job script.
+#    ${OUTPUT_DIR} : where output from this run goes
+#    ${ORIG_CHAIN_DIR} : where importance sampler input chain is
+
+output_dir: ${OUTPUT_DIR}
+include: campaign_file_for_original_chains.yml
+
+components:
+
+  nocuts:
+    params:
+    - 2pt_like.angle_range_wtheta_1_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_1_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_1_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_1_5 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_1_6 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_2_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_2_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_2_5 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_2_6 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_3_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_3_5 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_3_6 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_4_5 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_4_6 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_5_6 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_1_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_2_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_3_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_4_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_5_5 = 0.0000 999.0000
+    - 2pt_like.angle_range_wtheta_6_6 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_1_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_1_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_1_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_1_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_2_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_2_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_2_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_3_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_3_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_xip_4_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_1_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_1_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_1_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_1_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_2_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_2_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_2_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_3_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_3_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_xim_4_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_1_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_1_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_1_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_1_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_2_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_2_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_2_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_2_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_3_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_3_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_3_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_3_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_4_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_4_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_4_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_4_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_5_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_5_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_5_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_5_4 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_6_1 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_6_2 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_6_3 = 0.0000 999.0000
+    - 2pt_like.angle_range_gammat_6_4 = 0.0000 999.0000
+
+runs:
+
+
+  # Use samples & pipeline from 
+  #    campaign file: campaign_file_for_original_chains.yml
+  #    run: 32pt_lcdm_baseline
+  # BUT USING NO SCALE CUTS
+  - name: ppd.32pt_lcdm_baseline-IS
+    parent:  32pt_lcdm_baseline
+    components:
+    - nocuts
+    params:
+    - pipeline.extra_output = data_vector/2pt_theory#1300
+    - pipeline.fast_slow=F
+    - sampler = importance
+    - importance.input = ${ORIG_CHAIN_DIR}/32pt_lcdm_baseline.txt
+
+  # Use samples from the chain output from 
+  #    campaign file: campaign_file_for_original_chains.yml
+  #    run name: 22pt_lcdm_baseline
+  # Saving DV for pipeline matching that in 
+  #    campaign file:  campaign_y6fast_32pt.yml
+  #    run name: 32pt_lcdm_baseline 
+  # BUT USING NO SCALE CUTS
+  - name: ppd.22pt_lcdm_baseline-IS
+    parent:  32pt_lcdm_baseline
+    components:
+    - nocuts
+    params:
+    - pipeline.extra_output = data_vector/2pt_theory#1300
+    - pipeline.fast_slow=F
+    - sampler = importance
+    - importance.input = ${ORIG_CHAIN_DIR}/22pt_lcdm_baseline.txt
+
+  # Use samples & pipeline from 
+  #    campaign file: campaign_file_for_original_chains.yml
+  #    run: 12pt_lcdm_baseline
+  # BUT USING NO SCALE CUTS
+  - name: ppdw.12pt_lcdm_baseline-IS
+    parent: 12pt_lcdm_baseline
+    components:
+    - nocuts
+    params:
+    - pipeline.extra_output = data_vector/2pt_theory#520
+    - pipeline.fast_slow=F
+    - sampler = importance
+    - importance.input = ${ORIG_CHAIN_DIR}/12pt_lcdm_baseline.txt
+
