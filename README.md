@@ -1,6 +1,6 @@
 # y6-ppd-public
 Public facing repository containing tools the Y6 Gaussian Mixture PPD methods.
-Contact Jessie Muir (muirjc@ucmail.uc.edu) with any questions!
+Contact Jessie Muir (muirjc@ucmail.uc.edu) with any questions! This methodology was co-developed by her and Cyrille Doux, and benefited from the input of a number of their DES collaborators. 
 
 ## Overview
 
