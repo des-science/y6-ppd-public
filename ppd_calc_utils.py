@@ -8,10 +8,10 @@ should import it into another script or notebook where you set up the specific
 calculations you would like to perform. Generally the only function you will need
 to interface with is do_ppd(). 
 
-See Readme for notes on how to use this, as well as example code in
+See README for notes on how to use this, as well as example code in
 run_ppd_calcs_example.py
 
-And/or contact Jessie Muir with questions.
+Contact Jessie Muir with questions.
 """
 
 import os
@@ -186,7 +186,7 @@ def get_PPD_MixtureGaussian_helper(loc, cov, weights):
 def load_ppd_run(chainfile, fitsfile,  posterior_usecorrs = None, posterior_scutini = None, test_usecorrs=None, test_scutini=None, twopt_section='2pt_like'):
     """
     Read info needed for PPD calc from cosmosis importance sampling chain run
-    to save DV theory caclulations
+    to save DV theory calcuulations
 
     assume we have a chain originally run on data dc 
     ("dcondition", called just "d" in Cyrille's notes/code)

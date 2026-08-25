@@ -60,6 +60,8 @@ def main():
     chainbase_shear_wtheta = '12pt_w_lin_lcdm'
     
     #############################
+    # Note that calculations are set up in "if" statement blocks
+    # so that they can be easily toggled on or off as needed
     
     #=========================================
     # Goodness of fit

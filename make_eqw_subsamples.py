@@ -1,10 +1,11 @@
 """
 Given list of nautilus chains, if file exists, make a subsampled
-version with equal weights. This isn't strictly necessary for PPD calculations,
-but if you're using importance sampling to save model predictions for each
-sample in a posterior, subsampling the chain can make this much more
-efficient. (Note that this is feasible because  Nautilus sampler chains
-typically save millions of samples, but have an effective sample size of order 10^4.)
+version with equal weights. This isn't strictly necessary for PPD
+calculations, but if you're using importance sampling to save model
+predictions for each sample in a posterior, subsampling the chain
+can make this much more efficient. (Note that this is feasible
+because  Nautilus sampler chains typically save millions of samples,
+but have an effective sample size of order 10^4.)
 
 Script by Jessie Muir, adapting from example script from Joe Zuntz, as
 discussed in

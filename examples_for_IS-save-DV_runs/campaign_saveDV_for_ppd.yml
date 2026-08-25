@@ -1,14 +1,19 @@
-# This campaign file contains runs that can be used for saving extra output for PPD.
+# This file shows an example of how you can easily set up runs in
+# a cosmosis campaign file for importances sampling runs saving
+# model predictions for observables as derived parameters. This
+# is a necessary input to the PPD calculations.
 
+#========================================================
 #  Need to define chain directory paths as bash variables in  your job script.
 #    ${OUTPUT_DIR} : where output from this run goes
 #    ${ORIG_CHAIN_DIR} : where importance sampler input chain is
 
 output_dir: ${OUTPUT_DIR}
 include: campaign_file_for_original_chains.yml
+# ^ the above yml should be where runs are defined for the original chains
 
 components:
-
+  # campaign component that removes scale cuts
   nocuts:
     params:
     - 2pt_like.angle_range_wtheta_1_2 = 0.0000 999.0000
@@ -79,7 +84,7 @@ components:
 
 runs:
 
-
+  # Saving 3x2pt DV elements for 3x2pt chain 
   # Use samples & pipeline from 
   #    campaign file: campaign_file_for_original_chains.yml
   #    run: 32pt_lcdm_baseline
@@ -89,11 +94,25 @@ runs:
     components:
     - nocuts
     params:
+    # the trickiest piece here is making sure we count the number of DV elements
+    # correctly for this extra_output. You could have the IS pipeline
+    # use the same scale cuts as the original chain, but that'll make
+    # the data vector (DV) element counting more complicated, so I just run this with no cuts.
+    # In earlier tests I was doing 1000 was the right number
+    # for max angle of 250”, but we need a higher number for the DV with more elements
     - pipeline.extra_output = data_vector/2pt_theory#1300
     - pipeline.fast_slow=F
     - sampler = importance
+    # This next line should point to the original chain we want the posterior from.
+    # I recommend using the ORIG_CHAIN_DIR bash variable rather than hard-coding
+    # your path so that this same yml file could be used by multiple users
+    # who might be running on different systems.
     - importance.input = ${ORIG_CHAIN_DIR}/32pt_lcdm_baseline.txt
 
+  # Saving 3x2pt DV elements for 2x2pt chain
+  #   Note that 3x2pt uses the same parameters as 2x2pt, so we
+  #   can compute the full 3x2pt DV for each sample. Doing this
+  #   will let us do PPD test for P(shear|2x2pt)
   # Use samples from the chain output from 
   #    campaign file: campaign_file_for_original_chains.yml
   #    run name: 22pt_lcdm_baseline
@@ -111,6 +130,7 @@ runs:
     - sampler = importance
     - importance.input = ${ORIG_CHAIN_DIR}/22pt_lcdm_baseline.txt
 
+  # Saving 1x2pt (Shear only) DV elements for 1x2pt chain
   # Use samples & pipeline from 
   #    campaign file: campaign_file_for_original_chains.yml
   #    run: 12pt_lcdm_baseline
@@ -120,6 +140,9 @@ runs:
     components:
     - nocuts
     params:
+    # again, the number of points that need to be saved will depend on 
+    # the number of angular bins being computed in the 2pt_like module
+    # shear-only pipeline has fewer 2pt observables than 3x2pt, adjust count!
     - pipeline.extra_output = data_vector/2pt_theory#520
     - pipeline.fast_slow=F
     - sampler = importance
